@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+results/
+out/
+*_debug/
+
+# Only the deer sample is published; tools/fetch_samples.py downloads the
+# freely licensed test puzzles (with ground truth) into data/.
+data/*
+!data/README.md
+!data/06_10_26.mp4
+connect_the_dots.mp4

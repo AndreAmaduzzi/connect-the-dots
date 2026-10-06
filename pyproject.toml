@@ -1,0 +1,32 @@
+[project]
+name = "connect-the-dots"
+version = "0.1.0"
+description = "Solve connect-the-dots puzzles from a photo or phone video, draw the solution as a reel, and let an AI name the picture"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.15.0",
+    "gradio>=6.29.1",
+    "imageio-ffmpeg>=0.6.0",
+    "numpy>=2.3.5",
+    "paddleocr>=3.7",
+    "paddlepaddle>=3.3.1",
+    "pillow>=12.3.0",
+    "scipy>=1.18.1",
+    "torch>=2.14.1",
+    "torchvision>=0.29.1",
+    "transformers>=5.18.0",
+]
+
+[tool.uv]
+package = false
+
+# The GPU driver here (550) supports CUDA <= 12.4; PyPI's default torch wheel
+# needs CUDA 13, so take the cu126 build (runs on 12.x drivers).
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
